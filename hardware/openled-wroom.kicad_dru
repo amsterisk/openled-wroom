@@ -1,0 +1,14 @@
+(version 1)
+# Custom design rules for JLCPCB standard 2-layer boards (1.6 mm, 1 oz), copied from i2c-mux-hat.
+# Base limits (clearance, track, via 0.3 mm drill / 0.6 mm pad, hole, edge) live in Board Setup -> Constraints;
+# these rules add checks the built-in constraints can't express.
+# Capabilities: https://jlcpcb.com/capabilities/pcb-capabilities
+
+(rule "THT pad annular ring"
+	(constraint annular_width (min 0.25))
+	(condition "A.Type == 'Pad' && A.Pad_Type == 'Through-hole'"))
+
+(rule "Copper to unplated hole"
+	(constraint hole_clearance (min 0.3))
+	(condition "A.Pad_Type == 'NPTH, mechanical'"))
+

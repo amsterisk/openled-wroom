@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "openled")(type "KiCad")(uri "${KIPRJMOD}/openled.pretty")(options "")(descr "OpenLED project footprints"))
+)

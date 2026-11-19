@@ -1,0 +1,17 @@
+# KiCad backups / caches / local state
+*-backups/
+*.kicad_prl
+*.lck
+\#auto_saved_files#
+_autosave-*
+fp-info-cache
+*.bak
+# generated outputs (fab files are built per release)
+production/
+gerbers/
+*.rpt
+# local design tooling and notes (not published)
+NOTES.md
+tools/*
+!tools/export.sh
+__pycache__/
