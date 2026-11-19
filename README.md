@@ -26,16 +26,25 @@ It has not yet been reviewed or fabricated.
 
 ## Connectors
 
-| Ref | Type | Pins |
-|---|---|---|
-| J1 | 2-way 5.08 mm screw terminal | 1 = +5 V, 2 = GND |
-| J2 | 8-way 3.5 mm screw terminal | D1, G, D2, G, D3, G, D4, G |
+All connectors are 2-pin JST XH (2.5 mm pitch, vertical, B2B-XH-A). Pin 1 is the signal and pin 2 is GND.
 
-J2 carries data plus a ground reference for each output. **LED power does not go through this
-board.** Wire the strip power straight from the PSU(s):
+| Ref | Pin 1 | Pin 2 |
+|---|---|---|
+| J1 | +5 V in | GND |
+| J2–J5 | LED data D1–D4 | GND |
+
+Each output has its own connector, so you only need to fit the outputs you use. Fit at least J2
+(D1), and set WLED to match.
+
+Each output's GND pin is the data ground reference. **LED power does not go through this board.**
+Wire the strip power straight from the PSU(s):
 - Inject power about every 150–200 LEDs, with heavy wire and a fuse on each run.
-- Join every PSU's GND to the G terminals.
-- Keep the data run from J2 to the first LED short (under a few metres).
+- Join each strip's GND to its output's GND pin.
+- Keep the data run from the board to the first LED short (under a few metres).
+
+The data ground wires run in parallel with the heavy power returns. Keep the board near where the
+strips are fed, so only a small share of the LED current flows back through it. XH pins are rated
+about 3 A.
 
 At full white, 1440 LEDs can draw about 86 A. Set WLED's brightness limiter to about 80 % of what
 your supplies can deliver.
