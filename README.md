@@ -21,7 +21,7 @@ It has not yet been reviewed or fabricated.
   - AMS1117-3.3 regulator.
 - **Button on GPIO0**. This is WLED's default button: tap for on/off, long-press to reset to AP mode.
   Holding it during reset enters download mode.
-- **No USB or UART.** The module is flashed before assembly. After that, update over Wi-Fi (WLED OTA).
+- **No USB on board.** Flash the module before assembly or through the optional serial header (J6). After that, update over Wi-Fi (WLED OTA).
 - 2-layer board, 54 × 39 mm, with two M3 mounting holes.
 
 ## Connectors
@@ -48,6 +48,24 @@ about 3 A.
 
 At full white, 1440 LEDs can draw about 86 A. Set WLED's brightness limiter to about 80 % of what
 your supplies can deliver.
+
+## Serial header (optional)
+
+J6 is a 1×4 2.54 mm header for an off-board USB-serial adapter (CH340, CH343, CP2102 and similar).
+It's left unfitted by default.
+
+| J6 pin | Signal | Adapter pin |
+|---|---|---|
+| 1 (square pad) | GND | GND |
+| 2 | TX (ESP32 TXD0) | RX |
+| 3 | RX (ESP32 RXD0) | TX |
+| 4 | EN (reset, active low) | – |
+
+- **Use a 3.3 V adapter**, or set the adapter's jumper to 3.3 V. The ESP32's RX pin isn't 5 V tolerant.
+- **No power pin.** Power the board from J1 as usual.
+- **To enter download mode:** hold the button (GPIO0), briefly short EN to GND (or power-cycle
+  J1), then release the button. Then flash with esptool or the WLED web installer.
+- The serial port also carries the ESP32 boot log, at 115200 baud.
 
 ## WLED settings
 

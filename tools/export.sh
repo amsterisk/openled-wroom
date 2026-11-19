@@ -24,7 +24,7 @@ HW="$ROOT/hardware"
 NAME="openled-wroom"
 PCB="$HW/$NAME.kicad_pcb"
 SCH="$HW/$NAME.kicad_sch"
-VER="${1:-$(git -C "$ROOT" describe --tags --always --dirty 2>/dev/null || echo v1.0)}"
+VER="${1:-$(git -C "$ROOT" describe --tags --always --dirty 2>/dev/null || echo v1.1)}"
 OUT="$ROOT/production/$VER"
 
 # kicad-cli is `kicad.kicad-cli` in the snap package. The snap can only write inside $HOME,
